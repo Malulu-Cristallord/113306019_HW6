@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HW6</title>
+</head>
+<body>
+	<h1>My Homework 6</h1>
+	
+	<script>
+
+	//creating a random number
+	const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (let i = digits.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [digits[i], digits[j]] = [digits[j], digits[i]]; 
+    }
+
+    const fourDigitNumber = digits.slice(0, 4).join('');
+    const digit1 = fourDigitNumber.slice(0, 1);
+    const digit2 = fourDigitNumber.slice(1, 2);
+    const digit3 = fourDigitNumber.slice(2, 3);
+    const digit4 = fourDigitNumber.slice(3, 4);
+
+	document.write(fourDigitNumber + " ");
+	document.write(digit1 + " ");
+	document.write(digit2 + " ");
+	document.write(digit3 + " ");
+	document.write(digit4 + " ");
+	</script>
+
+	<input id = "inputNum" type = "text" placeholder="Input here: "/>
+	<input id="button" type="submit" name="button" onclick="myFunction();" value="enter"/>
+
+	<script>
+	//asking the end user to input a number
+	var isValid = false;
+	var goStop = false;
+	
+	function myFunction(){
+    	goStop = true;
+	};   
+	document.write(goStop);
+	while(isValid == false && goStop == true){
+		var input = document.getElementById("inputNum").value;
+		if(input.length != 4){
+			isValid = false;
+			alert("Wrong digit count, U idiot")
+			goStop = false;
+		}
+
+		if(input.length == 4){
+			var uniqueDigits = new Set(input);  // Use Set to remove duplicates
+    		if (uniqueDigits.size !== 4) {
+        		alert("Wrong, you entered repeating digits.");
+      			isValid = false; 
+      			goStop = false;
+    		} else {
+    		    isValid = true;  
+        		alert("Valid input!");
+        		goStop = false;
+    		}
+		}
+		document.write(isValid);
+		document.write(goStop);
+	}
+
+	
+	</script>
+</body>
+</html>
